@@ -128,7 +128,7 @@ export default {
       }
     },
     keyboardCheck(e) {
-      if (e.code !== "Enter" && e.code !== "Space" && !this.disabled) {
+      if (e.code !== "Enter" && e.code !== "Space" && !this.disabled && e.code !== 'Escape') {
         this.isActive = true;
       }
     },
@@ -208,6 +208,7 @@ fieldset,
 }
 
 fieldset {
+  padding: 0;
   width: 100%;
   background-color: white;
   border: 1px solid #e2e2e2;
@@ -265,9 +266,10 @@ fieldset.active legend {
   overflow-x: hidden;
   overflow-y: auto;
   z-index: 999;
-  background-color: white;
   border-radius: 8px;
+  background-color: white;
   height: 200px;
+  border: 1px solid #e2e2e2;
 }
 
 .invert .options {
