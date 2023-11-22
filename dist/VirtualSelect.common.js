@@ -51,7 +51,7 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/VirtualSelect.vue?vue&type=template&id=7c110a18&scoped=true
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/VirtualSelect.vue?vue&type=template&id=1cd088c9&scoped=true
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
@@ -239,7 +239,7 @@ var staticRenderFns = [];
       }
     },
     keyboardCheck(e) {
-      if (e.code !== "Enter" && e.code !== "Space" && !this.disabled) {
+      if (e.code !== "Enter" && e.code !== "Space" && !this.disabled && e.code !== 'Escape') {
         this.isActive = true;
       }
     },
@@ -304,10 +304,10 @@ var staticRenderFns = [];
 });
 ;// CONCATENATED MODULE: ./src/components/VirtualSelect.vue?vue&type=script&lang=js
  /* harmony default export */ var components_VirtualSelectvue_type_script_lang_js = (VirtualSelectvue_type_script_lang_js); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/VirtualSelect.vue?vue&type=style&index=0&id=7c110a18&prod&scoped=true&lang=css
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/VirtualSelect.vue?vue&type=style&index=0&id=1cd088c9&prod&scoped=true&lang=css
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/VirtualSelect.vue?vue&type=style&index=0&id=7c110a18&prod&scoped=true&lang=css
+;// CONCATENATED MODULE: ./src/components/VirtualSelect.vue?vue&type=style&index=0&id=1cd088c9&prod&scoped=true&lang=css
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
@@ -422,7 +422,7 @@ var component = normalizeComponent(
   staticRenderFns,
   false,
   null,
-  "7c110a18",
+  "1cd088c9",
   null
   
 )
