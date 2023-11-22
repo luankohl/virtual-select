@@ -2,9 +2,15 @@
   "name": "virtual-select",
   "version": "0.1.0",
   "private": true,
+  "main": "dist/VirtualSelect.common.js",
+  "files": [
+    "dist/*",
+    "*.js",
+    "*.json"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --target lib --name VirtualSelect ./src/components/VirtualSelect.vue",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
