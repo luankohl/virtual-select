@@ -2,6 +2,7 @@
   "name": "lrk-virtual-select",
   "version": "0.3.0",
   "main": "dist/VirtualSelect.common.js",
+  "license": "MIT",
   "files": [
     "dist/*",
     "*.js",
