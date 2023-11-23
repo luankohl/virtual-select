@@ -1,6 +1,11 @@
 # This is a personal vue2 select component with virtual list
 
 ```
+import "lrk-virtual-select/dist/VirtualSelect.css";
+import VirtualSelect from "lrk-virtual-select";
+```
+
+```
 <VirtualSelect
   :disabled="false"
   :invert="false"
