@@ -2,6 +2,7 @@
   <div id="app">
     <VirtualSelect
       v-model="selectValue"
+      :tabindex="1"
       :options="[
         {
           label: 'teste 1',
@@ -15,6 +16,7 @@
       placeholder="teste"
     />
     <VirtualSelect
+      :tabindex="2"
       disabled
       v-model="selectValue"
       :options="[
@@ -30,6 +32,7 @@
       placeholder="teste"
     />
     <VirtualSelect
+      :tabindex="3"
       invert
       v-model="selectValue2"
       :options="[
@@ -66,8 +69,8 @@ export default {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  /* justify-content: center;
+  flex-direction: column; */
   gap: 2rem;
 }
 </style>

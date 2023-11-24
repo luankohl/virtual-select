@@ -1,5 +1,6 @@
 <template>
   <div
+    :id="identification"
     ref="virtualselect"
     class="virtual-select"
     :class="{
@@ -36,7 +37,7 @@
       </legend>
       <input
         :disabled="disabled"
-        tabindex="1"
+        :tabindex="tabindex"
         type="text"
         name="search"
         @focusin="disabled ? (isActive = false) : (isActive = true)"
@@ -75,7 +76,7 @@
             :key="index"
             @click.stop="() => selectValue(item.value)"
             @keydown="(e) => keyboardSelectValue(e, item.value)"
-            :tabindex="2 + index"
+            :tabindex="(tabindex + 1) + index"
           >
             {{ item.label }}
           </div>
@@ -93,6 +94,7 @@ export default {
       search: "",
       isActive: false,
       scrollAdd: 0,
+      identification: String(Math.ceil(new Date().getTime() / (Math.random() * 10)))
     };
   },
   props: {
@@ -114,6 +116,11 @@ export default {
       type: Boolean,
       default: false,
     },
+    tabindex: {
+      type: Number,
+      required: true,
+      default: 1,
+    }
   },
   methods: {
     selectValue(value) {
@@ -164,6 +171,15 @@ export default {
         this.isActive = false;
       }
     },
+    checkFocus(e) {
+      if (e.target === window) {
+        return;
+      }
+      const select = e.target.closest('.virtual-select');
+      if (select.id !== this.identification) {
+        this.isActive = false;
+      }
+    }
   },
   computed: {
     findItems() {
@@ -187,10 +203,13 @@ export default {
     this.$refs.virtualcontainer.addEventListener("scroll", () => {
       this.scrollAdd = Math.floor(this.$refs.virtualcontainer.scrollTop / 34);
     });
+
+    window.addEventListener('focus', this.checkFocus, true);
   },
   beforeMount() {
     window.removeEventListener("click", this.clickOut);
     window.removeEventListener("keydown", this.escapeKey);
+    window.removeEventListener('focus', this.checkFocus, true);
   },
 };
 </script>
@@ -227,8 +246,10 @@ fieldset legend {
   top: 50%;
   transform: translateY(-50%);
   left: 10px;
+  right: 36px;
   max-width: calc(100% - 2rem);
   transition: all 0.2s ease-in-out 0s;
+  overflow: hidden;
 }
 
 .virtual-select.active fieldset legend {
@@ -240,6 +261,7 @@ fieldset legend span {
   backdrop-filter: blur(10px);
   padding: 0 5px;
   border-radius: 8px;
+  white-space: nowrap;
 }
 
 fieldset input {
@@ -282,6 +304,9 @@ fieldset.active legend {
   padding: 0 10px;
   height: 34px;
   line-height: 34px;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
 }
 
 .option-item:hover {
