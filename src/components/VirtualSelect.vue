@@ -166,10 +166,34 @@ export default {
         this.isActive = false;
       }
     },
-    escapeKey(e) {
+    keydown(e) {
+      if (e.target === window) {
+        return;
+      }
+
       if (e.key === "Escape") {
         this.isActive = false;
       }
+
+      if (e.target.closest('.virtual-select')) {
+        if (e.target.closest('.virtual-select').id !== this.identification) {   
+          if (e.keyCode === 40) {
+            if (e.target.classList.contains('option-item') && e.target.nextSibling) {
+              e.target.nextSibling.focus()
+            } else {
+              e.target.closest('.virtual-select').querySelector('.option-item').focus();
+            }
+          }
+          if (e.keyCode === 38) {
+            if (e.target.classList.contains('option-item') && e.target.previousSibling) {
+              e.target.previousSibling.focus()
+            } else {
+              e.target.closest('.virtual-select').querySelector('input').focus();
+            }
+          } 
+        }
+      }
+
     },
     checkFocus(e) {
       if (e.target === window) {
@@ -179,7 +203,7 @@ export default {
       if (select.id !== this.identification) {
         this.isActive = false;
       }
-    }
+    },
   },
   computed: {
     findItems() {
@@ -199,16 +223,15 @@ export default {
   },
   mounted() {
     window.addEventListener("click", this.clickOut);
-    window.addEventListener("keydown", this.escapeKey);
+    window.addEventListener("keydown", this.keydown);
     this.$refs.virtualcontainer.addEventListener("scroll", () => {
       this.scrollAdd = Math.floor(this.$refs.virtualcontainer.scrollTop / 34);
     });
-
     window.addEventListener('focus', this.checkFocus, true);
   },
   beforeMount() {
     window.removeEventListener("click", this.clickOut);
-    window.removeEventListener("keydown", this.escapeKey);
+    window.removeEventListener("keydown", this.keydown);
     window.removeEventListener('focus', this.checkFocus, true);
   },
 };
