@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "main": "dist/VirtualSelect.common.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luankohl/virtual-select"
+  },
   "files": [
     "dist/*",
     "*.js",
