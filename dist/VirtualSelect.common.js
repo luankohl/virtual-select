@@ -51,7 +51,7 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/VirtualSelect.vue?vue&type=template&id=14bf82ba&scoped=true
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/VirtualSelect.vue?vue&type=template&id=61c9c705&scoped=true
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
@@ -248,7 +248,7 @@ var staticRenderFns = [];
       }
     },
     keyboardCheck(e) {
-      if (e.code !== "Enter" && e.code !== "Space" && !this.disabled && e.code !== 'Escape') {
+      if (e.code !== "Enter" && e.code !== "Space" && !this.disabled && e.code !== "Escape") {
         this.isActive = true;
       }
     },
@@ -278,36 +278,18 @@ var staticRenderFns = [];
       }
     },
     keydown(e) {
-      if (e.target === window) {
+      if (e.target.__proto__.toString() === "[object HTMLBodyElement]" || e.target.__proto__.toString() === "[object HTMLDocument]" || e.target.__proto__.toString() === "[object Window]") {
         return;
       }
       if (e.key === "Escape") {
         this.isActive = false;
       }
-      if (e.target.closest('.virtual-select')) {
-        if (e.target.closest('.virtual-select').id !== this.identification) {
-          if (e.keyCode === 40) {
-            if (e.target.classList.contains('option-item') && e.target.nextSibling) {
-              e.target.nextSibling.focus();
-            } else {
-              e.target.closest('.virtual-select').querySelector('.option-item').focus();
-            }
-          }
-          if (e.keyCode === 38) {
-            if (e.target.classList.contains('option-item') && e.target.previousSibling) {
-              e.target.previousSibling.focus();
-            } else {
-              e.target.closest('.virtual-select').querySelector('input').focus();
-            }
-          }
-        }
-      }
     },
     checkFocus(e) {
-      if (e.target === window) {
+      if (e.target.__proto__.toString() === "[object HTMLBodyElement]" || e.target.__proto__.toString() === "[object HTMLDocument]" || e.target.__proto__.toString() === "[object Window]") {
         return;
       }
-      const select = e.target.closest('.virtual-select');
+      const select = e.target.closest(".virtual-select");
       if (select.id !== this.identification) {
         this.isActive = false;
       }
@@ -335,20 +317,20 @@ var staticRenderFns = [];
     this.$refs.virtualcontainer.addEventListener("scroll", () => {
       this.scrollAdd = Math.floor(this.$refs.virtualcontainer.scrollTop / 34);
     });
-    window.addEventListener('focus', this.checkFocus, true);
+    window.addEventListener("focus", this.checkFocus, true);
   },
   beforeMount() {
     window.removeEventListener("click", this.clickOut);
     window.removeEventListener("keydown", this.keydown);
-    window.removeEventListener('focus', this.checkFocus, true);
+    window.removeEventListener("focus", this.checkFocus, true);
   }
 });
 ;// CONCATENATED MODULE: ./src/components/VirtualSelect.vue?vue&type=script&lang=js
  /* harmony default export */ var components_VirtualSelectvue_type_script_lang_js = (VirtualSelectvue_type_script_lang_js); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/VirtualSelect.vue?vue&type=style&index=0&id=14bf82ba&prod&scoped=true&lang=css
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-12.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/VirtualSelect.vue?vue&type=style&index=0&id=61c9c705&prod&scoped=true&lang=css
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/VirtualSelect.vue?vue&type=style&index=0&id=14bf82ba&prod&scoped=true&lang=css
+;// CONCATENATED MODULE: ./src/components/VirtualSelect.vue?vue&type=style&index=0&id=61c9c705&prod&scoped=true&lang=css
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
@@ -463,7 +445,7 @@ var component = normalizeComponent(
   staticRenderFns,
   false,
   null,
-  "14bf82ba",
+  "61c9c705",
   null
   
 )

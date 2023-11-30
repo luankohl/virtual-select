@@ -76,7 +76,7 @@
             :key="index"
             @click.stop="() => selectValue(item.value)"
             @keydown="(e) => keyboardSelectValue(e, item.value)"
-            :tabindex="(tabindex + 1) + index"
+            :tabindex="tabindex + 1 + index"
           >
             {{ item.label }}
           </div>
@@ -94,7 +94,9 @@ export default {
       search: "",
       isActive: false,
       scrollAdd: 0,
-      identification: String(Math.ceil(new Date().getTime() / (Math.random() * 10)))
+      identification: String(
+        Math.ceil(new Date().getTime() / (Math.random() * 10))
+      ),
     };
   },
   props: {
@@ -120,7 +122,7 @@ export default {
       type: Number,
       required: true,
       default: 1,
-    }
+    },
   },
   methods: {
     selectValue(value) {
@@ -135,7 +137,12 @@ export default {
       }
     },
     keyboardCheck(e) {
-      if (e.code !== "Enter" && e.code !== "Space" && !this.disabled && e.code !== 'Escape') {
+      if (
+        e.code !== "Enter" &&
+        e.code !== "Space" &&
+        !this.disabled &&
+        e.code !== "Escape"
+      ) {
         this.isActive = true;
       }
     },
@@ -167,39 +174,28 @@ export default {
       }
     },
     keydown(e) {
-      if (e.target === window) {
+      if (
+        e.target.__proto__.toString() === "[object HTMLBodyElement]" ||
+        e.target.__proto__.toString() === "[object HTMLDocument]" ||
+        e.target.__proto__.toString() === "[object Window]"
+      ) {
         return;
       }
 
       if (e.key === "Escape") {
         this.isActive = false;
       }
-
-      if (e.target.closest('.virtual-select')) {
-        if (e.target.closest('.virtual-select').id !== this.identification) {   
-          if (e.keyCode === 40) {
-            if (e.target.classList.contains('option-item') && e.target.nextSibling) {
-              e.target.nextSibling.focus()
-            } else {
-              e.target.closest('.virtual-select').querySelector('.option-item').focus();
-            }
-          }
-          if (e.keyCode === 38) {
-            if (e.target.classList.contains('option-item') && e.target.previousSibling) {
-              e.target.previousSibling.focus()
-            } else {
-              e.target.closest('.virtual-select').querySelector('input').focus();
-            }
-          } 
-        }
-      }
-
     },
     checkFocus(e) {
-      if (e.target === window) {
+      if (
+        e.target.__proto__.toString() === "[object HTMLBodyElement]" ||
+        e.target.__proto__.toString() === "[object HTMLDocument]" ||
+        e.target.__proto__.toString() === "[object Window]"
+      ) {
         return;
       }
-      const select = e.target.closest('.virtual-select');
+
+      const select = e.target.closest(".virtual-select");
       if (select.id !== this.identification) {
         this.isActive = false;
       }
@@ -227,12 +223,12 @@ export default {
     this.$refs.virtualcontainer.addEventListener("scroll", () => {
       this.scrollAdd = Math.floor(this.$refs.virtualcontainer.scrollTop / 34);
     });
-    window.addEventListener('focus', this.checkFocus, true);
+    window.addEventListener("focus", this.checkFocus, true);
   },
   beforeMount() {
     window.removeEventListener("click", this.clickOut);
     window.removeEventListener("keydown", this.keydown);
-    window.removeEventListener('focus', this.checkFocus, true);
+    window.removeEventListener("focus", this.checkFocus, true);
   },
 };
 </script>
@@ -313,7 +309,7 @@ fieldset.active legend {
   z-index: 999;
   border-radius: 8px;
   background-color: white;
-  height: 200px;
+  height: 240px;
   border: 1px solid #e2e2e2;
 }
 
@@ -363,12 +359,15 @@ fieldset.active legend {
 .vs-enter-active {
   animation: bounce-in 0.2s;
 }
+
 .vs-leave-active {
   animation: bounce-out 0.2s;
 }
+
 .sv-enter-active {
   animation: invert-bounce-in 0.2s;
 }
+
 .sv-leave-active {
   animation: invert-bounce-out 0.2s;
 }
@@ -383,6 +382,7 @@ fieldset.active legend {
     transform: scaleY(1);
   }
 }
+
 @keyframes bounce-out {
   0% {
     transform-origin: top;
@@ -404,6 +404,7 @@ fieldset.active legend {
     transform: scaleY(1);
   }
 }
+
 @keyframes invert-bounce-out {
   0% {
     transform-origin: bottom;
@@ -415,4 +416,3 @@ fieldset.active legend {
   }
 }
 </style>
-
