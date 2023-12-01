@@ -126,30 +126,34 @@ export default {
       }
     },
     keydown(e) {
-      if (
-        e.target.__proto__.toString() === "[object HTMLBodyElement]" ||
-        e.target.__proto__.toString() === "[object HTMLDocument]" ||
-        e.target.__proto__.toString() === "[object Window]"
-      ) {
-        return;
-      }
+      if (e.target.__proto__.toString === Object.prototype.toString) {
+        if (
+          e.target.__proto__.toString() === "[object HTMLBodyElement]" ||
+          e.target.__proto__.toString() === "[object HTMLDocument]" ||
+          e.target.__proto__.toString() === "[object Window]"
+        ) {
+          return;
+        }
 
-      if (e.key === "Escape") {
-        this.isActive = false;
+        if (e.key === "Escape") {
+          this.isActive = false;
+        }
       }
     },
     checkFocus(e) {
-      if (
-        e.target.__proto__.toString() === "[object HTMLBodyElement]" ||
-        e.target.__proto__.toString() === "[object HTMLDocument]" ||
-        e.target.__proto__.toString() === "[object Window]"
-      ) {
-        return;
-      }
+      if (e.target.__proto__.toString === Object.prototype.toString) {
+        if (
+          e.target.__proto__.toString() === "[object HTMLBodyElement]" ||
+          e.target.__proto__.toString() === "[object HTMLDocument]" ||
+          e.target.__proto__.toString() === "[object Window]"
+        ) {
+          return;
+        }
 
-      const select = e.target.closest(".virtual-select");
-      if (select !== null && select.id !== this.identification) {
-        this.isActive = false;
+        const select = e.target.closest(".virtual-select");
+        if (select !== null && select.id !== this.identification) {
+          this.isActive = false;
+        }
       }
     },
   },

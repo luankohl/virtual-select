@@ -61,7 +61,7 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/VirtualSelect.vue?vue&type=template&id=4293616e&scoped=true
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/VirtualSelect.vue?vue&type=template&id=9cfb7d46&scoped=true
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
@@ -288,20 +288,24 @@ var staticRenderFns = [];
       }
     },
     keydown(e) {
-      if (e.target.__proto__.toString() === "[object HTMLBodyElement]" || e.target.__proto__.toString() === "[object HTMLDocument]" || e.target.__proto__.toString() === "[object Window]") {
-        return;
-      }
-      if (e.key === "Escape") {
-        this.isActive = false;
+      if (e.target.__proto__.toString === Object.prototype.toString) {
+        if (e.target.__proto__.toString() === "[object HTMLBodyElement]" || e.target.__proto__.toString() === "[object HTMLDocument]" || e.target.__proto__.toString() === "[object Window]") {
+          return;
+        }
+        if (e.key === "Escape") {
+          this.isActive = false;
+        }
       }
     },
     checkFocus(e) {
-      if (e.target.__proto__.toString() === "[object HTMLBodyElement]" || e.target.__proto__.toString() === "[object HTMLDocument]" || e.target.__proto__.toString() === "[object Window]") {
-        return;
-      }
-      const select = e.target.closest(".virtual-select");
-      if (select !== null && select.id !== this.identification) {
-        this.isActive = false;
+      if (e.target.__proto__.toString === Object.prototype.toString) {
+        if (e.target.__proto__.toString() === "[object HTMLBodyElement]" || e.target.__proto__.toString() === "[object HTMLDocument]" || e.target.__proto__.toString() === "[object Window]") {
+          return;
+        }
+        const select = e.target.closest(".virtual-select");
+        if (select !== null && select.id !== this.identification) {
+          this.isActive = false;
+        }
       }
     }
   },
@@ -337,10 +341,10 @@ var staticRenderFns = [];
 });
 ;// CONCATENATED MODULE: ./src/components/VirtualSelect.vue?vue&type=script&lang=js
  /* harmony default export */ var components_VirtualSelectvue_type_script_lang_js = (VirtualSelectvue_type_script_lang_js); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-54.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-54.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-54.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/VirtualSelect.vue?vue&type=style&index=0&id=4293616e&prod&scoped=true&lang=css
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-54.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-54.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-54.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/VirtualSelect.vue?vue&type=style&index=0&id=9cfb7d46&prod&scoped=true&lang=css
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/VirtualSelect.vue?vue&type=style&index=0&id=4293616e&prod&scoped=true&lang=css
+;// CONCATENATED MODULE: ./src/components/VirtualSelect.vue?vue&type=style&index=0&id=9cfb7d46&prod&scoped=true&lang=css
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
@@ -455,7 +459,7 @@ var component = normalizeComponent(
   staticRenderFns,
   false,
   null,
-  "4293616e",
+  "9cfb7d46",
   null
   
 )
