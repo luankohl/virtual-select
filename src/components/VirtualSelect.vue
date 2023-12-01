@@ -1,33 +1,13 @@
 <template>
-  <div
-    :id="identification"
-    ref="virtualselect"
-    class="virtual-select"
-    :class="{
-      active: !!value && !disabled,
-      disabled: disabled,
-      invert: invert,
-    }"
-    @click.passive="isActive = true"
-    @keyup="keyboardCheck"
-  >
+  <div :id="identification" ref="virtualselect" class="virtual-select" :class="{
+    active: !!value && !disabled,
+    disabled: disabled,
+    invert: invert,
+  }" @click.passive="isActive = true" @keyup="keyboardCheck">
     <fieldset :class="{ active: isActive }">
-      <button
-        @click.prevent.stop="selectValue('')"
-        class="clear"
-        v-if="value && !disabled"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16px"
-          height="16px"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke="red"
-        >
+      <button @click.prevent.stop="selectValue('')" class="clear" v-if="value && !disabled">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="red">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
@@ -35,49 +15,22 @@
       <legend>
         <span>{{ getLabel() }}</span>
       </legend>
-      <input
-        :disabled="disabled"
-        :tabindex="tabindex"
-        type="text"
-        name="search"
-        @focusin="disabled ? (isActive = false) : (isActive = true)"
-        autocomplete="off"
-        v-model="search"
-      />
+      <input :disabled="disabled" :tabindex="tabindex" type="text" name="search"
+        @focusin="disabled ? (isActive = false) : (isActive = true)" autocomplete="off" v-model="search" />
       <div class="chevron" :class="{ active: isActive }">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24px"
-          height="24px"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="black"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="feather feather-chevron-down"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none" stroke="black"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
           <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
       </div>
     </fieldset>
 
     <transition :name="invert ? 'sv' : 'vs'">
-      <div
-        v-show="isActive"
-        ref="virtualcontainer"
-        class="options"
-        @focusin="disabled ? (isActive = false) : (isActive = true)"
-      >
+      <div v-show="isActive" ref="virtualcontainer" class="options"
+        @focusin="disabled ? (isActive = false) : (isActive = true)">
         <div class="content" :style="contentStyle()">
-          <div
-            class="option-item"
-            v-for="(item, index) in items"
-            :key="index"
-            @click.stop="() => selectValue(item.value)"
-            @keydown="(e) => keyboardSelectValue(e, item.value)"
-            :tabindex="tabindex + 1 + index"
-          >
+          <div class="option-item" v-for="(item, index) in items" :key="index" @click.stop="() => selectValue(item.value)"
+            @keydown="(e) => keyboardSelectValue(e, item.value)" :tabindex="tabindex + 1 + index">
             {{ item.label }}
           </div>
         </div>
@@ -85,7 +38,6 @@
     </transition>
   </div>
 </template>
-
 <script>
 export default {
   name: "VirtualSelect",
@@ -196,7 +148,7 @@ export default {
       }
 
       const select = e.target.closest(".virtual-select");
-      if (select.id !== this.identification) {
+      if (select !== null && select.id !== this.identification) {
         this.isActive = false;
       }
     },
@@ -377,6 +329,7 @@ fieldset.active legend {
     transform-origin: top;
     transform: scaleY(0);
   }
+
   100% {
     transform-origin: top;
     transform: scaleY(1);
@@ -388,6 +341,7 @@ fieldset.active legend {
     transform-origin: top;
     transform: scaleY(1);
   }
+
   100% {
     transform-origin: top;
     transform: scaleY(0);
@@ -399,6 +353,7 @@ fieldset.active legend {
     transform-origin: bottom;
     transform: scaleY(0);
   }
+
   100% {
     transform-origin: bottom;
     transform: scaleY(1);
@@ -410,6 +365,7 @@ fieldset.active legend {
     transform-origin: bottom;
     transform: scaleY(1);
   }
+
   100% {
     transform-origin: bottom;
     transform: scaleY(0);
